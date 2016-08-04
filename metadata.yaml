@@ -1,0 +1,28 @@
+_repo: The-Black-Bearded-Barbarian---The-Life-of-George-Leslie-Mackay-of-Formosa_1759
+_version: 0.0.1
+creator:
+  author:
+    agent_name: MacGregor, Mary Esther Miller
+    alias: Keith, Marian
+    birthdate: 1876
+    deathdate: 1961
+    gutenberg_agent_id: '712'
+    url: http://www.gutenberg.org/2009/agents/712
+description: ''
+gutenberg_issued: '1999-05-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '1759'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Missionaries -- Taiwan -- Biography'
+- !lcc 'BV'
+- !lcsh 'Presbyterian Church in Canada -- Missions'
+- !lcsh 'Missions -- Taiwan'
+- !lcsh 'Mackay, George Leslie, 1844-1901'
+- GITenberg
+title: 'The Black-Bearded Barbarian : The Life of George Leslie Mackay of Formosa'
+url: http://www.gutenberg.org/ebooks/1759
