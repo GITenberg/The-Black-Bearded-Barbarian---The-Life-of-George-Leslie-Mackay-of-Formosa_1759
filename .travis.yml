@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: KerugHn2vbzmTb23cGzFTPM5CMuT3GTVm2A+iVb1C0yLYccvQYtKKWdNZXsgpWYF4x+g23zHevCO2LfIqAOohCPhyBMhrwIQwJqB+bM2Uucn6wEonwDDSMk/F3liDg2R3NoVb4kPW1Bpyyn7Xe6Bb9wQNr2sCl+U8Hs93yx13kujhF9zazavcYUXiDLgMHzkrn6Nd4c5gfkQXdiEFYsFPnEDXHo461BJGLtFz/Rkai0+f9w1SZ4eFZ/E5ulBAIdy/dzz/5auezqRUDtJeVeFjgLuqzypE4gbQDkRa5uW5guCNVfeYCE924bu3Do83DpKABnleXKESTUGgUog0frTJkfOwM/bZnUp7v5yyYOtDYxdQL1QBJJFO3qNNTL5SGP+jvSYAyjCqZGlHx/cTZoJtl4uI75CZRhCpLe4LtwMy1xBRLKx8NuNRJJzlhyykCRYKhnvox9fmWLpoxUR1dOfAUASybwnLTyt5uuWcbAV0zFsCIxNLZWcmQQrJR8Q+db8/pQJvKLxTXBGpfjFWq8SwYEBvvuA9i8XTc69OKXg4Wc/FC4PlVm3rpS76XnrGl/8JgGElouvQp63urp7E8dkl4lyJu9n138AjMkkpuS2xq5UzAPtegyDLqlRxZvPJIfNO8T4a2wvL1h3qRuPyZCacJMqc/jjP3wGJWhOofkRSJg=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Black-Bearded-Barbarian---The-Life-of-George-Leslie-Mackay-of-Formosa_1759
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
