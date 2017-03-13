@@ -1,5 +1,8 @@
 _repo: The-Black-Bearded-Barbarian---The-Life-of-George-Leslie-Mackay-of-Formosa_1759
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: MacGregor, Mary Esther Miller
@@ -9,6 +12,8 @@ creator:
     gutenberg_agent_id: '712'
     url: http://www.gutenberg.org/2009/agents/712
 description: ''
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/1759#The-Black-Bearded-Barbarian---The-Life-of-George-Leslie-Mackay-of-Formosa
 gutenberg_issued: '1999-05-01'
 gutenberg_type: Text
 identifiers:
